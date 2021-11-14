@@ -16,7 +16,7 @@ jobs:
 
       - name: Maven settings configuration
         env:
-          GITHUB_ACTION_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+          SECRET_GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
         run: envsubst < settings.template.xml > settings.xml
 
       - name: Set up JDK 11
@@ -27,5 +27,5 @@ jobs:
       - name: Compile the maven project
         run: ./mvnw -B compile
 
-      - name: Maven Deploy Jar Archive
+      - name: Deploy the maven pom archive
         run: ./mvnw -B -s settings.xml deploy
